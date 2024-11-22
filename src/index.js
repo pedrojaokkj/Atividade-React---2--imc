@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+
+function CauculadoraIMC(props){
+  const imc = props.peso / (props.altura * props.altura)
+  let retorno = ""
+
+  if (imc < 18.5){
+    retorno = "Abaixo de Peso"
+  }else if (imc < 25){
+    retorno = "Peso Normal"
+  }else if (imc < 30){
+    retorno = "Sobrepeso"
+  }else{
+    retorno = "Obesidade"
+  }
+
+  return <p>{retorno}</p>
+}
+
+function App(){
+  return(
+    <div>
+      <h1>Questão 2 - CauculadoraIMC</h1>
+      <CauculadoraIMC peso = {70} altura = {1.75}/>
+    </div>
+  )
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <div>
+    <App/>
+  </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
